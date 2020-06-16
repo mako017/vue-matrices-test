@@ -37,11 +37,17 @@
 </template>
 
 <script>
+import drawSVG from "@/assets/js/drawing.js";
 export default {
   methods: {
     draw(a) {
       console.log(a);
     },
+  },
+  mounted() {
+    for (let i = 0; i < 20; i++) {
+      drawSVG.select("el" + i, i);
+    }
   },
 };
 </script>
