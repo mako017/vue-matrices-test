@@ -179,7 +179,9 @@ export default {
       this.$router.push("final");
     },
     nextItem() {
-      this.pushResponse(this.currentAnswer.join(""));
+      this.pushResponse(this.currentAnswer);
+      this.currentAnswer = [...this.currentAnswer.fill(false)];
+      this.redrawSolution();
       this.currentPos++;
       if (this.currentPos < this.items.length) {
         this.currentItem = { ...this.items[this.currentPos] };

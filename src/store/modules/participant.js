@@ -12,18 +12,21 @@ const getters = {};
 
 const actions = {
   pushResponse({ commit }, response) {
-    let newResponse = state.response;
-    newResponse.push(response), commit("updateResponse", newResponse);
+    response = response.map(item => +item).join("");
+    let newResponse = state.participant.response;
+    newResponse.push(response);
+    commit("updateResponse", newResponse);
+    console.log(state.participant.response);
   },
   pushRT({ commit }, RT) {
-    let newRT = state.RT;
+    let newRT = state.participant.RT;
     newRT.push(RT), commit("updateRT", newRT);
   },
 };
 
 const mutations = {
-  updateResponse: (state, newResponse) => (state.response = [...newResponse]),
-  updateRT: (state, newRT) => (state.RT = [...newRT]),
+  updateResponse: (state, newResponse) => (state.participant.response = [...newResponse]),
+  updateRT: (state, newRT) => (state.participant.RT = [...newRT]),
 };
 
 export default {
