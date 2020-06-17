@@ -1,15 +1,15 @@
 <template>
   <div class="root">
     <div class="item-container">
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat1" ref="mat1" val="1" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat2" ref="mat2" val="2" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat3" ref="mat3" val="3" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat4" ref="mat4" val="4" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat5" ref="mat5" val="5" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat6" ref="mat6" val="6" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat7" ref="mat7" val="7" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat8" ref="mat8" val="8" />
-      <svg viewBox="0 0 100 100" class="element e-item" id="mat9" ref="mat9" val="9" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat1" ref="mat1" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat2" ref="mat2" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat3" ref="mat3" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat4" ref="mat4" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat5" ref="mat5" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat6" ref="mat6" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat7" ref="mat7" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat8" ref="mat8" />
+      <svg viewBox="0 0 100 100" class="element e-item" id="mat9" ref="mat9" />
     </div>
     <div class="opt-container">
       <svg viewBox="0 0 100 100" class="element e-opt" id="el0" @click="draw(0)" />
@@ -33,21 +33,36 @@
       <svg viewBox="0 0 100 100" class="element e-opt" id="el18" @click="draw(18)" />
       <svg viewBox="0 0 100 100" class="element e-opt" id="el19" @click="draw(19)" />
     </div>
+    <button @click="nextItem" type="button">Continue</button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import drawSVG from "@/assets/js/drawing.js";
 export default {
+  data() {
+    return {
+      currentItem: {},
+      currentPos: 0,
+    };
+  },
   methods: {
     draw(a) {
       console.log(a);
+      drawSVG.select("mat9", a);
+    },
+    nextItem() {
+      this.currentPos++;
+      this.currentItem = { ...this.items[this.currentPos] };
     },
   },
+  computed: mapGetters(["items"]),
   mounted() {
     for (let i = 0; i < 20; i++) {
       drawSVG.select("el" + i, i);
     }
+    this.currentItem = { ...this.items[0] };
   },
 };
 </script>
