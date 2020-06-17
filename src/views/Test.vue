@@ -12,51 +12,174 @@
       <svg viewBox="0 0 100 100" class="element e-item" id="mat9" ref="mat9" />
     </div>
     <div class="opt-container">
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el0" @click="drawSymbol(0)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el1" @click="drawSymbol(1)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el2" @click="drawSymbol(2)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el3" @click="drawSymbol(3)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el4" @click="drawSymbol(4)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el5" @click="drawSymbol(5)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el6" @click="drawSymbol(6)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el7" @click="drawSymbol(7)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el8" @click="drawSymbol(8)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el9" @click="drawSymbol(9)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el10" @click="drawSymbol(10)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el11" @click="drawSymbol(11)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el12" @click="drawSymbol(12)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el13" @click="drawSymbol(13)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el14" @click="drawSymbol(14)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el15" @click="drawSymbol(15)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el16" @click="drawSymbol(16)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el17" @click="drawSymbol(17)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el18" @click="drawSymbol(18)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el19" @click="drawSymbol(19)" />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[0] }"
+        class="element e-opt"
+        id="el0"
+        @click="drawSymbol(0)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[1] }"
+        class="element e-opt"
+        id="el1"
+        @click="drawSymbol(1)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[2] }"
+        class="element e-opt"
+        id="el2"
+        @click="drawSymbol(2)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[3] }"
+        class="element e-opt"
+        id="el3"
+        @click="drawSymbol(3)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[4] }"
+        class="element e-opt"
+        id="el4"
+        @click="drawSymbol(4)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[5] }"
+        class="element e-opt"
+        id="el5"
+        @click="drawSymbol(5)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[6] }"
+        class="element e-opt"
+        id="el6"
+        @click="drawSymbol(6)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[7] }"
+        class="element e-opt"
+        id="el7"
+        @click="drawSymbol(7)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[8] }"
+        class="element e-opt"
+        id="el8"
+        @click="drawSymbol(8)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[9] }"
+        class="element e-opt"
+        id="el9"
+        @click="drawSymbol(9)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[10] }"
+        class="element e-opt"
+        id="el10"
+        @click="drawSymbol(10)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[11] }"
+        class="element e-opt"
+        id="el11"
+        @click="drawSymbol(11)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[12] }"
+        class="element e-opt"
+        id="el12"
+        @click="drawSymbol(12)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[13] }"
+        class="element e-opt"
+        id="el13"
+        @click="drawSymbol(13)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[14] }"
+        class="element e-opt"
+        id="el14"
+        @click="drawSymbol(14)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[15] }"
+        class="element e-opt"
+        id="el15"
+        @click="drawSymbol(15)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[16] }"
+        class="element e-opt"
+        id="el16"
+        @click="drawSymbol(16)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[17] }"
+        class="element e-opt"
+        id="el17"
+        @click="drawSymbol(17)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[18] }"
+        class="element e-opt"
+        id="el18"
+        @click="drawSymbol(18)"
+      />
+      <svg
+        viewBox="0 0 100 100"
+        v-bind:class="{ selected: currentAnswer[19] }"
+        class="element e-opt"
+        id="el19"
+        @click="drawSymbol(19)"
+      />
     </div>
     <button @click="nextItem" type="button">Continue</button>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import drawSVG from "@/assets/js/drawing.js";
 export default {
   data() {
     return {
+      currentAnswer: new Array(20).fill(false),
       currentItem: {},
       currentPos: 0,
     };
   },
   methods: {
-    drawSymbol(a) {
-      console.log(a);
-      drawSVG.select("mat9", a);
+    ...mapActions(["pushResponse", "pushRT"]),
+    drawSymbol(el) {
+      this.currentAnswer[el] = !this.currentAnswer[el];
+      this.currentAnswer = [...this.currentAnswer];
+      this.redrawSolution();
     },
     endTest() {
-      // alert("End of demonstration");
       this.$router.push("final");
     },
     nextItem() {
+      this.pushResponse(this.currentAnswer.join(""));
       this.currentPos++;
       if (this.currentPos < this.items.length) {
         this.currentItem = { ...this.items[this.currentPos] };
@@ -70,6 +193,12 @@ export default {
         for (let j = 0; j < codeArray[i].split("").length; j++) {
           if (+codeArray[i].split("")[j] === 1) drawSVG.select("mat" + (i + 1), j);
         }
+      }
+    },
+    redrawSolution() {
+      drawSVG.clear("mat9");
+      for (let j = 0; j < this.currentAnswer.length; j++) {
+        if (+this.currentAnswer[j] === 1) drawSVG.select("mat9", j);
       }
     },
   },
@@ -112,6 +241,11 @@ export default {
   margin: 5px;
   border: 1px solid black;
 }
+
+.selected {
+  background-color: #dedede;
+}
+
 .selection {
   border-color: chartreuse;
 }
