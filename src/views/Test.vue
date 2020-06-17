@@ -12,26 +12,26 @@
       <svg viewBox="0 0 100 100" class="element e-item" id="mat9" ref="mat9" />
     </div>
     <div class="opt-container">
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el0" @click="draw(0)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el1" @click="draw(1)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el2" @click="draw(2)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el3" @click="draw(3)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el4" @click="draw(4)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el5" @click="draw(5)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el6" @click="draw(6)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el7" @click="draw(7)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el8" @click="draw(8)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el9" @click="draw(9)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el10" @click="draw(10)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el11" @click="draw(11)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el12" @click="draw(12)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el13" @click="draw(13)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el14" @click="draw(14)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el15" @click="draw(15)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el16" @click="draw(16)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el17" @click="draw(17)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el18" @click="draw(18)" />
-      <svg viewBox="0 0 100 100" class="element e-opt" id="el19" @click="draw(19)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el0" @click="drawSymbol(0)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el1" @click="drawSymbol(1)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el2" @click="drawSymbol(2)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el3" @click="drawSymbol(3)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el4" @click="drawSymbol(4)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el5" @click="drawSymbol(5)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el6" @click="drawSymbol(6)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el7" @click="drawSymbol(7)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el8" @click="drawSymbol(8)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el9" @click="drawSymbol(9)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el10" @click="drawSymbol(10)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el11" @click="drawSymbol(11)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el12" @click="drawSymbol(12)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el13" @click="drawSymbol(13)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el14" @click="drawSymbol(14)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el15" @click="drawSymbol(15)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el16" @click="drawSymbol(16)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el17" @click="drawSymbol(17)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el18" @click="drawSymbol(18)" />
+      <svg viewBox="0 0 100 100" class="element e-opt" id="el19" @click="drawSymbol(19)" />
     </div>
     <button @click="nextItem" type="button">Continue</button>
   </div>
@@ -48,13 +48,29 @@ export default {
     };
   },
   methods: {
-    draw(a) {
+    drawSymbol(a) {
       console.log(a);
       drawSVG.select("mat9", a);
     },
+    endTest() {
+      // alert("End of demonstration");
+      this.$router.push("final");
+    },
     nextItem() {
       this.currentPos++;
-      this.currentItem = { ...this.items[this.currentPos] };
+      if (this.currentPos < this.items.length) {
+        this.currentItem = { ...this.items[this.currentPos] };
+        this.redrawItem();
+      } else this.endTest();
+    },
+    redrawItem() {
+      const codeArray = this.currentItem.code.split(",");
+      for (let i = 0; i < 8; i++) {
+        drawSVG.clear("mat" + (i + 1));
+        for (let j = 0; j < codeArray[i].split("").length; j++) {
+          if (+codeArray[i].split("")[j] === 1) drawSVG.select("mat" + (i + 1), j);
+        }
+      }
     },
   },
   computed: mapGetters(["items"]),
@@ -63,6 +79,7 @@ export default {
       drawSVG.select("el" + i, i);
     }
     this.currentItem = { ...this.items[0] };
+    this.redrawItem();
   },
 };
 </script>
