@@ -167,12 +167,16 @@ export default {
       currentItem: {},
       currentPos: 0,
 
-      time: 0,
+      responseTime: 0,
+      logTime: 0,
     };
   },
   methods: {
-    ...mapActions(["pushResponse", "pushRT"]),
+    ...mapActions(["appendLog", "pushResponse", "pushRT"]),
     drawSymbol(el) {
+      const clickTime = new Date().getTime();
+      this.appendLog(`o${el}:${clickTime - this.logTime}`);
+      this.logTime = clickTime;
       this.currentAnswer[el] = !this.currentAnswer[el];
       this.currentAnswer = [...this.currentAnswer];
       this.redrawSolution();
@@ -183,14 +187,16 @@ export default {
     nextItem() {
       const clickTime = new Date().getTime();
       this.pushResponse(this.currentAnswer);
-      this.pushRT(clickTime - this.time);
+      this.pushRT(clickTime - this.responseTime);
+      this.appendLog("send:" + (clickTime - this.logTime));
       this.currentAnswer = [...this.currentAnswer.fill(false)];
       this.redrawSolution();
       this.currentPos++;
       if (this.currentPos < this.items.length) {
         this.currentItem = { ...this.items[this.currentPos] };
         this.redrawItem();
-        this.time = clickTime;
+        this.responseTime = clickTime;
+        this.logTime = clickTime;
       } else this.endTest();
     },
     redrawItem() {
@@ -216,7 +222,8 @@ export default {
     }
     this.currentItem = { ...this.items[0] };
     this.redrawItem();
-    this.time = new Date().getTime();
+    this.responseTime = new Date().getTime();
+    this.logTime = this.responseTime;
   },
 };
 </script>
