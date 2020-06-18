@@ -166,6 +166,8 @@ export default {
       currentAnswer: new Array(20).fill(false),
       currentItem: {},
       currentPos: 0,
+
+      time: 0,
     };
   },
   methods: {
@@ -179,13 +181,16 @@ export default {
       this.$router.push("final");
     },
     nextItem() {
+      const clickTime = new Date().getTime();
       this.pushResponse(this.currentAnswer);
+      this.pushRT(clickTime - this.time);
       this.currentAnswer = [...this.currentAnswer.fill(false)];
       this.redrawSolution();
       this.currentPos++;
       if (this.currentPos < this.items.length) {
         this.currentItem = { ...this.items[this.currentPos] };
         this.redrawItem();
+        this.time = clickTime;
       } else this.endTest();
     },
     redrawItem() {
@@ -211,6 +216,7 @@ export default {
     }
     this.currentItem = { ...this.items[0] };
     this.redrawItem();
+    this.time = new Date().getTime();
   },
 };
 </script>
