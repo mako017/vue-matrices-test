@@ -37,6 +37,16 @@ img {
 .mainContent >>> p {
   margin: 0.5rem 0;
 }
+.mainContent >>> h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+.mainContent >>> h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem 0;
+}
 .subContent >>> p {
   margin: 0.5rem 0;
 }
