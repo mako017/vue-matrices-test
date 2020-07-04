@@ -4,6 +4,7 @@ const state = {
   participant: {
     id: "fixedId",
     response: [],
+    solved: [],
     RT: [],
     log: [],
   },
@@ -15,14 +16,11 @@ const getters = {
 
 const actions = {
   appendLog({ commit }, event) {
-    console.log(event);
-
     let newLog = state.participant.log; //copy the current log Array
     newLog.push(event); //append the last event
     commit("upadteLog", newLog); //commit to the state
   },
   pushResponse({ commit }, response) {
-    response = response.map(item => +item).join(""); //convert bool and join to one string
     let newResponse = state.participant.response; // copy the current response Array
     newResponse.push(response); //append the last response
     commit("updateResponse", newResponse); //commit to the state
@@ -32,12 +30,19 @@ const actions = {
     newRT.push(RT); //append the last RT
     commit("updateRT", newRT); //commit to the state
   },
+  pushSolution({ commit }, solution) {
+    let newSolved = [...state.participant.solved];
+    newSolved.push(solution);
+    commit("updateSolved", newSolved);
+    console.log(state.participant.solved);
+  },
 };
 
 const mutations = {
-  upadteLog: (state, newLog) => (state.log = [...newLog]),
+  upadteLog: (state, newLog) => (state.participant.log = [...newLog]),
   updateResponse: (state, newResponse) => (state.participant.response = [...newResponse]),
   updateRT: (state, newRT) => (state.participant.RT = [...newRT]),
+  updateSolved: (state, newSolved) => (state.participant.solved = newSolved),
 };
 
 export default {

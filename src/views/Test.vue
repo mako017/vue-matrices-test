@@ -172,7 +172,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["appendLog", "pushResponse", "pushRT"]),
+    ...mapActions(["appendLog", "pushResponse", "pushRT", "pushSolution"]),
     drawSymbol(el) {
       const clickTime = new Date().getTime();
       this.appendLog(`o${el}:${clickTime - this.logTime}`);
@@ -186,7 +186,11 @@ export default {
     },
     nextItem() {
       const clickTime = new Date().getTime();
-      this.pushResponse(this.currentAnswer);
+      const solution = this.currentItem.code.split(",")[8]; //get last part of code string
+      const answer = this.currentAnswer.map(item => +item).join(""); //convert the bool responses to a string with 1 and 0
+
+      this.pushResponse(answer);
+      this.pushSolution(solution === answer ? 1 : 0);
       this.pushRT(clickTime - this.responseTime);
       this.appendLog("send:" + (clickTime - this.logTime));
       this.currentAnswer = [...this.currentAnswer.fill(false)];
@@ -215,7 +219,7 @@ export default {
       }
     },
   },
-  computed: mapGetters(["items"]),
+  computed: mapGetters(["items", "solution"]),
   mounted() {
     for (let i = 0; i < 20; i++) {
       drawSVG.select("el" + i, i);
