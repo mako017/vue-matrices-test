@@ -8,7 +8,7 @@ class COMM {
       code,
     };
     let response = await axios.post(this.PHPDIR + "readData.php", JSON.stringify(sendObj));
-    console.log(response);
+    return response.data;
   }
   static async requestData(code) {
     let sendObj = {
