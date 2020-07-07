@@ -21,9 +21,15 @@ const getters = {
   items: state => state.items,
 };
 
-const actions = {};
+const actions = {
+  setItems: ({ commit }, items) => {
+    commit("setItems", items);
+  },
+};
 
-const mutations = {};
+const mutations = {
+  setItems: (state, items) => (state.items = items),
+};
 
 export default {
   state,
