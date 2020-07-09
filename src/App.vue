@@ -12,12 +12,9 @@ require("@/assets/css/normal.css");
 export default {
   methods: mapActions(["setInstructions", "setItems", "setSettings"]),
   async beforeMount() {
-    const responseData = await COMM.sendData(6, "readTestSet");
-    // console.log(JSON.parse(responseData.items));
+    const responseData = await COMM.requestData(6, "readTestSet");
     this.setItems(JSON.parse(responseData.items));
-    // console.log(JSON.parse(responseData.instructions));
     this.setInstructions(JSON.parse(responseData.instructions));
-    // console.log(JSON.parse(responseData.settings));
     this.setSettings(JSON.parse(responseData.settings));
   },
 };

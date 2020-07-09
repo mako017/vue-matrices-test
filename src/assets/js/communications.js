@@ -7,12 +7,12 @@ class COMM {
       data,
       code,
     };
-    let response = await axios.post(this.PHPDIR + "readData.php", JSON.stringify(sendObj));
+    let response = await axios.post(this.PHPDIR + "writeData.php", JSON.stringify(sendObj));
     return response.data;
   }
-  static async requestData(code) {
+  static async requestData(data, code) {
     let sendObj = {
-      data: 0,
+      data,
       code,
     };
     let response = await axios.post(this.PHPDIR + "readData.php", JSON.stringify(sendObj));
