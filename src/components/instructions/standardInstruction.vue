@@ -1,10 +1,6 @@
 <template>
   <div class="root">
-    <h1>{{instruction.title}}</h1>
     <div class="mainContent" v-html="instruction.html"></div>
-    <div class="mainContent" v-html="instruction.mainContent"></div>
-    <img v-bind:src="instruction.img" />
-    <div class="subContent" v-html="instruction.subContent"></div>
   </div>
 </template>
 
