@@ -1,11 +1,11 @@
 const state = {
-  // settings: {
   testTime: 600,
-  itemTime: 60,
-  displaySolution: true,
+  useTestTime: true,
   displaytestTime: false,
+  itemTime: 60,
+  useItemTime: false,
   displayItemtime: false,
-  // },
+  displaySolution: true,
 };
 
 const getters = {

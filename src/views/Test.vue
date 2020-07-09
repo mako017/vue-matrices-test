@@ -169,6 +169,8 @@ export default {
 
       responseTime: 0,
       logTime: 0,
+      testInterval: null,
+      itemInterval: null,
     };
   },
   methods: {
@@ -189,11 +191,7 @@ export default {
       const solution = this.currentItem.code.split(",")[8]; //get last part of code string
       const answer = this.currentAnswer.map(item => +item).join(""); //convert the bool responses to a string with 1 and 0
 
-      this.pushResponse(answer);
-      this.pushSolution(solution === answer ? 1 : 0);
-      this.pushRT(clickTime - this.responseTime);
-      this.appendLog("send:" + (clickTime - this.logTime));
-      this.currentAnswer = [...this.currentAnswer.fill(false)];
+      this.saveResponse(clickTime, solution, answer);
       this.redrawSolution();
       this.currentPos++;
       if (this.currentPos < this.items.length) {
@@ -201,6 +199,7 @@ export default {
         this.redrawItem();
         this.responseTime = clickTime;
         this.logTime = clickTime;
+        if (this.settings.useItemTime) this.itemInterval = setTimeout(this.nextItem, this.settings.itemTime * 1000);
       } else this.endTest();
     },
     redrawItem() {
@@ -218,9 +217,18 @@ export default {
         if (+this.currentAnswer[j] === 1) drawSVG.select("mat9", j);
       }
     },
+    saveResponse(clickTime, solution, answer) {
+      this.pushResponse(answer);
+      this.pushSolution(solution === answer ? 1 : 0);
+      this.pushRT(clickTime - this.responseTime);
+      this.appendLog("send:" + (clickTime - this.logTime));
+      this.currentAnswer = [...this.currentAnswer.fill(false)];
+    },
   },
   computed: mapGetters(["items", "settings"]),
   mounted() {
+    console.log(this.settings);
+
     for (let i = 0; i < 20; i++) {
       drawSVG.select("el" + i, i);
     }
@@ -228,6 +236,9 @@ export default {
     this.redrawItem();
     this.responseTime = new Date().getTime();
     this.logTime = this.responseTime;
+
+    if (this.settings.useTestTime) this.testInterval = setTimeout(this.endTest, this.settings.testTime * 1000);
+    if (this.settings.useItemTime) this.itemInterval = setTimeout(this.nextItem, this.settings.itemTime * 1000);
   },
 };
 </script>
