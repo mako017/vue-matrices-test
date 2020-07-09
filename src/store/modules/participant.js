@@ -36,9 +36,11 @@ const actions = {
     commit("updateSolved", newSolved);
     console.log(state.participant.solved);
   },
+  updateID: ({ commit }, newID) => commit("updateID", newID),
 };
 
 const mutations = {
+  updateID: (state, newID) => (state.participant.id = newID),
   upadteLog: (state, newLog) => (state.participant.log = [...newLog]),
   updateResponse: (state, newResponse) => (state.participant.response = [...newResponse]),
   updateRT: (state, newRT) => (state.participant.RT = [...newRT]),

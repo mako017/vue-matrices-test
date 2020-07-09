@@ -10,9 +10,27 @@ import { mapActions } from "vuex";
 require("@/assets/css/normal.css");
 
 export default {
-  methods: mapActions(["setInstructions", "setItems", "setSettings"]),
-  async beforeMount() {
-    const responseData = await COMM.requestData(6, "readTestSet");
+  data() {
+    return {
+      urlParams: {
+        participantCode: null,
+        testID: null,
+      },
+    };
+  },
+  methods: {
+    ...mapActions(["setInstructions", "setItems", "setSettings", "updateID"]),
+    handleURL() {
+      const paramString = window.location.search;
+      const parameters = new URLSearchParams(paramString);
+      this.urlParams.participantCode = parameters.get("p") ? parameters.get("p") : null;
+      this.urlParams.testID = parameters.get("t") ? parameters.get("t") : null;
+      this.updateID(this.urlParams.participantCode);
+    },
+  },
+  async created() {
+    this.handleURL();
+    const responseData = await COMM.requestData(this.urlParams.testID, "readTestSet");
     this.setItems(JSON.parse(responseData.items));
     this.setInstructions(JSON.parse(responseData.instructions));
     this.setSettings(JSON.parse(responseData.settings));
