@@ -179,7 +179,7 @@ export default {
       this.logTime = clickTime;
       this.currentAnswer[el] = !this.currentAnswer[el];
       this.currentAnswer = [...this.currentAnswer];
-      this.redrawSolution();
+      if (this.settings.displaySolution) this.redrawSolution();
     },
     endTest() {
       this.$router.push("final");
@@ -219,7 +219,7 @@ export default {
       }
     },
   },
-  computed: mapGetters(["items", "solution"]),
+  computed: mapGetters(["items", "settings"]),
   mounted() {
     for (let i = 0; i < 20; i++) {
       drawSVG.select("el" + i, i);

@@ -1,9 +1,15 @@
 const state = {
-  settings: {},
+  // settings: {
+  testTime: 600,
+  itemTime: 60,
+  displaySolution: true,
+  displaytestTime: false,
+  displayItemtime: false,
+  // },
 };
 
 const getters = {
-  settings: state => state.settings,
+  settings: state => state,
 };
 
 const actions = {
