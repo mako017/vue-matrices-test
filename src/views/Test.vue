@@ -158,6 +158,7 @@
 </template>
 
 <script>
+import COMM from "@/assets/js/communications.js";
 import { mapGetters, mapActions } from "vuex";
 import drawSVG from "@/assets/js/drawing.js";
 export default {
@@ -184,6 +185,7 @@ export default {
       if (this.settings.displaySolution) this.redrawSolution();
     },
     endTest() {
+      this.writeResult();
       this.$router.push("final");
     },
     nextItem() {
@@ -224,8 +226,13 @@ export default {
       this.appendLog("send:" + (clickTime - this.logTime));
       this.currentAnswer = [...this.currentAnswer.fill(false)];
     },
+    writeResult() {
+      let data = this.participant;
+      data.testID = this.settings.testID;
+      COMM.sendData(data, "writeResult");
+    },
   },
-  computed: mapGetters(["items", "settings"]),
+  computed: mapGetters(["items", "settings", "participant"]),
   mounted() {
     console.log(this.settings);
 
