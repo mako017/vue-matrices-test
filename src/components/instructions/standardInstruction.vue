@@ -50,4 +50,11 @@ img {
   max-height: 60vh;
   max-width: 80%;
 }
+
+@media only screen and (max-device-width: 568px) {
+  .mainContent >>> img {
+    max-height: 70vh;
+    max-width: 90%;
+  }
+}
 </style>

@@ -286,4 +286,16 @@ export default {
 .selection {
   border-color: chartreuse;
 }
+@media only screen and (max-device-width: 568px) {
+  .item-container {
+    margin: 0.5rem auto;
+    width: 33vh;
+    height: 33vh;
+  }
+  .opt-container {
+    margin: 0.5rem auto;
+    width: 44vh;
+    height: 55vh;
+  }
+}
 </style>

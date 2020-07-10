@@ -38,4 +38,9 @@ button {
   width: auto;
   margin: auto auto 2rem auto;
 }
+@media only screen and (max-device-width: 568px) {
+  .mainContent >>> p {
+    text-align: justify;
+  }
+}
 </style>

@@ -61,4 +61,9 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+@media only screen and (max-device-width: 568px) {
+  #app {
+    padding: 0 2%;
+  }
+}
 </style>
