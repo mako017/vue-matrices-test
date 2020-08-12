@@ -7,19 +7,25 @@ const state = {
   useItemTime: false,
   displayItemtime: false,
   displaySolution: true,
+  demo: false,
 };
 
 const getters = {
   settings: state => state,
+  isDemo: state => state.demo,
 };
 
 const actions = {
+  setDemo: ({ commit }, demo) => {
+    commit("setDemo", demo);
+  },
   setSettings: ({ commit }, settings) => {
     commit("setSettings", settings);
   },
 };
 
 const mutations = {
+  setDemo: (state, demo) => (state.demo = demo),
   setSettings: (state, settings) => (state.settings = settings),
 };
 

@@ -6,7 +6,7 @@
 
 <script>
 import COMM from "@/assets/js/communications.js";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 require("@/assets/css/normal.css");
 
 export default {
@@ -19,21 +19,26 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["setInstructions", "setItems", "setSettings", "updateID"]),
+    ...mapActions(["setInstructions", "setItems", "setSettings", "setDemo", "updateID"]),
     handleURL() {
       const paramString = window.location.search;
       const parameters = new URLSearchParams(paramString);
       this.urlParams.participantCode = parameters.get("p") ? parameters.get("p") : null;
       this.urlParams.testID = parameters.get("t") ? parameters.get("t") : null;
+      if (this.urlParams.testID === null) this.setDemo(true);
       this.updateID(this.urlParams.participantCode);
+      console.log(this.isDemo);
     },
   },
+  computed: mapGetters(["isDemo"]),
   async created() {
     this.handleURL();
     const responseData = await COMM.requestData(this.urlParams.testID, "readTestSet");
-    this.setItems(JSON.parse(responseData.items));
-    this.setInstructions(JSON.parse(responseData.instructions));
-    this.setSettings(JSON.parse(responseData.settings));
+    if (responseData.items) {
+      this.setItems(JSON.parse(responseData.items));
+      this.setInstructions(JSON.parse(responseData.instructions));
+      this.setSettings(JSON.parse(responseData.settings));
+    }
   },
 };
 </script>
