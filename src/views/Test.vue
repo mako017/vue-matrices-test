@@ -185,13 +185,13 @@ export default {
       if (this.settings.displaySolution) this.redrawSolution();
     },
     endTest() {
-      this.writeResult();
+      if (!this.isDemo) this.writeResult();
       this.$router.push("final");
     },
     nextItem() {
       const clickTime = new Date().getTime();
       const solution = this.currentItem.code.split(",")[8]; //get last part of code string
-      const answer = this.currentAnswer.map(item => +item).join(""); //convert the bool responses to a string with 1 and 0
+      const answer = this.currentAnswer.map((item) => +item).join(""); //convert the bool responses to a string with 1 and 0
 
       this.saveResponse(clickTime, solution, answer);
       this.redrawSolution();
@@ -232,7 +232,7 @@ export default {
       COMM.sendData(data, "writeResult");
     },
   },
-  computed: mapGetters(["items", "settings", "participant"]),
+  computed: mapGetters(["items", "settings", "participant", "isDemo"]),
   mounted() {
     console.log(this.settings);
 
