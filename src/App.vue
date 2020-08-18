@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       urlParams: {
-        participantCode: null,
+        participantCode: this.rndVP(9),
         testID: null,
       },
     };
@@ -23,11 +23,20 @@ export default {
     handleURL() {
       const paramString = window.location.search;
       const parameters = new URLSearchParams(paramString);
-      this.urlParams.participantCode = parameters.get("p") ? parameters.get("p") : null;
+      this.urlParams.participantCode = parameters.get("p") ? parameters.get("p") : this.urlParams.participantCode;
       this.urlParams.testID = parameters.get("t") ? parameters.get("t") : null;
       if (this.urlParams.testID === null) this.setDemo(true);
       this.updateID(this.urlParams.participantCode);
       console.log(this.isDemo);
+    },
+    rndVP(length) {
+      var result = "";
+      var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var charactersLength = characters.length;
+      for (var i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return "rnd_" + result;
     },
   },
   computed: mapGetters(["isDemo"]),
