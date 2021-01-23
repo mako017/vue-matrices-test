@@ -12,146 +12,26 @@
       <svg viewBox="0 0 100 100" class="element e-item" id="mat9" ref="mat9" />
     </div>
     <div class="opt-container">
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[0] }"
-        class="element e-opt"
-        id="el0"
-        @click="drawSymbol(0)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[1] }"
-        class="element e-opt"
-        id="el1"
-        @click="drawSymbol(1)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[2] }"
-        class="element e-opt"
-        id="el2"
-        @click="drawSymbol(2)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[3] }"
-        class="element e-opt"
-        id="el3"
-        @click="drawSymbol(3)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[4] }"
-        class="element e-opt"
-        id="el4"
-        @click="drawSymbol(4)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[5] }"
-        class="element e-opt"
-        id="el5"
-        @click="drawSymbol(5)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[6] }"
-        class="element e-opt"
-        id="el6"
-        @click="drawSymbol(6)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[7] }"
-        class="element e-opt"
-        id="el7"
-        @click="drawSymbol(7)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[8] }"
-        class="element e-opt"
-        id="el8"
-        @click="drawSymbol(8)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[9] }"
-        class="element e-opt"
-        id="el9"
-        @click="drawSymbol(9)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[10] }"
-        class="element e-opt"
-        id="el10"
-        @click="drawSymbol(10)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[11] }"
-        class="element e-opt"
-        id="el11"
-        @click="drawSymbol(11)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[12] }"
-        class="element e-opt"
-        id="el12"
-        @click="drawSymbol(12)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[13] }"
-        class="element e-opt"
-        id="el13"
-        @click="drawSymbol(13)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[14] }"
-        class="element e-opt"
-        id="el14"
-        @click="drawSymbol(14)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[15] }"
-        class="element e-opt"
-        id="el15"
-        @click="drawSymbol(15)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[16] }"
-        class="element e-opt"
-        id="el16"
-        @click="drawSymbol(16)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[17] }"
-        class="element e-opt"
-        id="el17"
-        @click="drawSymbol(17)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[18] }"
-        class="element e-opt"
-        id="el18"
-        @click="drawSymbol(18)"
-      />
-      <svg
-        viewBox="0 0 100 100"
-        v-bind:class="{ selected: currentAnswer[19] }"
-        class="element e-opt"
-        id="el19"
-        @click="drawSymbol(19)"
-      />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[0] }" class="element e-opt" id="el0" @click="drawSymbol(0)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[1] }" class="element e-opt" id="el1" @click="drawSymbol(1)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[2] }" class="element e-opt" id="el2" @click="drawSymbol(2)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[3] }" class="element e-opt" id="el3" @click="drawSymbol(3)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[4] }" class="element e-opt" id="el4" @click="drawSymbol(4)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[5] }" class="element e-opt" id="el5" @click="drawSymbol(5)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[6] }" class="element e-opt" id="el6" @click="drawSymbol(6)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[7] }" class="element e-opt" id="el7" @click="drawSymbol(7)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[8] }" class="element e-opt" id="el8" @click="drawSymbol(8)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[9] }" class="element e-opt" id="el9" @click="drawSymbol(9)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[10] }" class="element e-opt" id="el10" @click="drawSymbol(10)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[11] }" class="element e-opt" id="el11" @click="drawSymbol(11)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[12] }" class="element e-opt" id="el12" @click="drawSymbol(12)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[13] }" class="element e-opt" id="el13" @click="drawSymbol(13)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[14] }" class="element e-opt" id="el14" @click="drawSymbol(14)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[15] }" class="element e-opt" id="el15" @click="drawSymbol(15)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[16] }" class="element e-opt" id="el16" @click="drawSymbol(16)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[17] }" class="element e-opt" id="el17" @click="drawSymbol(17)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[18] }" class="element e-opt" id="el18" @click="drawSymbol(18)" />
+      <svg viewBox="0 0 100 100" v-bind:class="{ selected: currentAnswer[19] }" class="element e-opt" id="el19" @click="drawSymbol(19)" />
     </div>
     <button @click="nextItem" type="button">Continue</button>
   </div>
@@ -191,7 +71,7 @@ export default {
     nextItem() {
       const clickTime = new Date().getTime();
       const solution = this.currentItem.code.split(",")[8]; //get last part of code string
-      const answer = this.currentAnswer.map((item) => +item).join(""); //convert the bool responses to a string with 1 and 0
+      const answer = this.currentAnswer.map(item => +item).join(""); //convert the bool responses to a string with 1 and 0
 
       this.saveResponse(clickTime, solution, answer);
       this.redrawSolution();
